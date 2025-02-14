@@ -21,7 +21,7 @@
             color: red;
         }
         .gif-container img {
-            width: 250px; /* Adjust size */
+            width: 300px; /* Adjust size */
             margin-top: 20px;
             display: none; /* Hidden by default */
         }
@@ -51,6 +51,7 @@
             font-size: 2rem;
             color: darkred;
             font-weight: bold;
+            display: none; /* Hidden by default */
         }
     </style>
 </head>
@@ -63,22 +64,24 @@
         <button class="no" onmouseover="moveButton()">No</button>
     </div>
 
-    <p id="message"></p>
-
     <div class="gif-container">
         <img id="valentineGif" src="valentine.gif" alt="Happy Valentine!">
     </div>
 
+    <p id="message">This is the right answer ❤️</p>
+
     <script>
         function yesClicked() {
-            document.getElementById("message").innerText = "This is the right answer ❤️";
             document.getElementById("valentineGif").style.display = "block"; // Show GIF
+            setTimeout(() => {
+                document.getElementById("message").style.display = "block"; // Show message after a short delay
+            }, 500); // Adjust timing if needed
         }
 
         function moveButton() {
             let button = document.querySelector('.no');
-            let x = Math.random() * (window.innerWidth - 1000);
-            let y = Math.random() * (window.innerHeight - 500);
+            let x = Math.random() * (window.innerWidth - 10000);
+            let y = Math.random() * (window.innerHeight - 5000);
             button.style.left = x + "px";
             button.style.top = y + "px";
         }
