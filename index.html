@@ -15,7 +15,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            transition: background-color 0.5s ease; /* Smooth transition */
+            transition: background-color 0.5s ease;
         }
         h1 {
             font-size: 2.5rem;
@@ -53,10 +53,13 @@
         }
         #message {
             margin-top: 20px;
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: darkred;
             font-weight: bold;
             display: none;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
     </style>
 </head>
@@ -70,28 +73,27 @@
     </div>
 
     <div class="gif-container">
-        <img id="valentineGif" src="hug.webp" alt="Happy Valentine!">
+        <img id="valentineGif" src="valentine.gif" alt="Happy Valentine!">
     </div>
 
-    
-    <p id="message">This is the right answer ❤️</p>
+    <p id="message">That is the right answer ❤️</p>
 
     <script>
         function yesClicked() {
-            // Change background to white
             document.body.style.backgroundColor = "white";
-
-            // Hide the question and buttons
             document.getElementById("question").style.display = "none";
             document.getElementById("buttons-container").style.display = "none";
 
-            // Show the GIF
             document.getElementById("valentineGif").style.display = "block"; 
 
-            // Show the message after a short delay
             setTimeout(() => {
-                document.getElementById("message").style.display = "block"; 
-            }, 500); 
+                let message = document.getElementById("message");
+                message.style.display = "block";
+                setTimeout(() => {
+                    message.style.opacity = "1";
+                    message.style.transform = "scale(1)";
+                }, 100); 
+            }, 1000); 
         }
 
         function moveButton() {
